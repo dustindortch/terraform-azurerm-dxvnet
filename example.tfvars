@@ -1,5 +1,6 @@
 name                = "myVirtualNetwork"
 resource_group_name = "myResourceGroup"
+location            = "eastus"
 address_space       = ["10.0.1.0/24"]
 
 subnets = {

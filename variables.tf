@@ -8,6 +8,11 @@ variable "resource_group_name" {
   description = "Resource group name to deploy virtual network"
 }
 
+variable "location" {
+  type        = string
+  description = "Location to deploy virtual network"
+}
+
 variable "address_space" {
   type        = list(string)
   description = "Address spaces assigned to virtual network"

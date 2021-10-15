@@ -30,7 +30,6 @@ No modules.
 | [azurerm_network_ddos_protection_plan.ddos](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_ddos_protection_plan) | resource |
 | [azurerm_subnet.subnets](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
 | [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) | resource |
-| [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
 ## Inputs
 
@@ -39,6 +38,7 @@ No modules.
 | <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address spaces assigned to virtual network | `list(string)` | n/a | yes |
 | <a name="input_dns_servers"></a> [dns\_servers](#input\_dns\_servers) | DNS servers for Azure virtual network | `list(string)` | `[]` | no |
 | <a name="input_enable_ddos_protection_plan"></a> [enable\_ddos\_protection\_plan](#input\_enable\_ddos\_protection\_plan) | Enable standard ddos protection plan | `bool` | `false` | no |
+| <a name="input_location"></a> [location](#input\_location) | Location to deploy virtual network | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Virtual network name | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource group name to deploy virtual network | `string` | n/a | yes |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | n/a | <pre>map(object({<br>    address_prefixes                               = list(string)<br>    enforce_private_link_endpoint_network_policies = optional(bool)<br>    enforce_private_link_service_network_policies  = optional(bool)<br>    service_endpoints                              = optional(list(string))<br>  }))</pre> | n/a | yes |
