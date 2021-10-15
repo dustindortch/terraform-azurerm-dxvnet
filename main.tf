@@ -7,8 +7,8 @@ resource "azurerm_network_ddos_protection_plan" "ddos" {
   count = var.enable_ddos_protection_plan == true ? 1 : 0
 
   name                = "${var.name}_ddosplan1"
-  resource_group_name = data.azurerm_resource_group.rg.name
-  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = var.resource_group_name
+  location            = var.location
 }
 
 resource "azurerm_virtual_network" "vnet" {
