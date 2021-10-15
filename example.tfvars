@@ -1,6 +1,6 @@
-name                        = "myVirtualNetwork"
-resource_group_name         = "myResourceGroup"
-address_space               = ["10.0.1.0/24"]
+name                = "myVirtualNetwork"
+resource_group_name = "myResourceGroup"
+address_space       = ["10.0.1.0/24"]
 
 subnets = {
     "default" = {
@@ -16,6 +16,6 @@ subnets = {
     }
 }
 tags = {
-  "CreatedBy": "Terraform",
-  "Module": "terraform-azurerm-dxvnet"
+  CreatedBy = "Terraform"
+  Module    = "terraform-azurerm-dxvnet"
 }
