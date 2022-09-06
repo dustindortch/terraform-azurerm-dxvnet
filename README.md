@@ -2,7 +2,7 @@
 
 Module to create a virtual network resource and associated subnets in Microsoft Azure.
 
-This module implements a hierarchical structure for subnet definitions instead of a set of lists like the [terraform-azurerm-vnet](https://github.com/Azure/terraform-azurerm-network) module does, which is leads to fewer errors or misassociations of one list to another list incorrectly.
+This module implements a hierarchical structure for subnet definitions instead of a set of lists like the [terraform-azurerm-vnet](https://github.com/Azure/terraform-azurerm-network) module does, which leads to fewer errors or misassociations of one list to another list incorrectly.
 
 This module also implements the experimental feature [module_variable_optional_attrs](https://www.terraform.io/docs/language/expressions/type-constraints.html#experimental-optional-object-type-attributes).  This allows for specific properties of objects to have a default value assigned so that they are not required in each definition.  This is particularly useful for subnets.
 
