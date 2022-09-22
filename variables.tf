@@ -42,15 +42,8 @@ variable "enable_ddos_protection_plan" {
 variable "subnets" {
   type = map(object({
     address_prefixes                               = list(string)
-    enforce_private_link_endpoint_network_policies = optional(bool)
-    enforce_private_link_service_network_policies  = optional(bool)
+    enforce_private_link_endpoint_network_policies = optional(bool, false)
+    enforce_private_link_service_network_policies  = optional(bool, false)
     service_endpoints                              = optional(list(string))
   }))
-}
-
-locals {
-  subnets = defaults(var.subnets, {
-    enforce_private_link_endpoint_network_policies = false
-    enforce_private_link_service_network_policies  = false
-  })
 }
