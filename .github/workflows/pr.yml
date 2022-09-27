@@ -1,0 +1,62 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+     - main
+
+env:
+  TF_LOG: INFO
+
+permissions:
+  id-token: write
+  issues: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  pr-infras-check:
+   runs-on: ubuntu-latest
+   steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: AZ CLI Login
+      uses: azure/login@v1
+      with:
+       client-id: ${{secrets.AZURE_CLIENT_ID}}
+       tenant-id: ${{secrets.AZURE_TENANT_ID}}
+       subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+
+    - name: Run AZ Commands
+      run: |
+        az account show
+
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check
+
+    - name: Terrform Validate
+      id: validate
+      if: success() || failure()
+      env:
+        ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
+        ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+        ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      run: terraform validate -no-color
+
+    - name: Terraform Test
+      id: test
+      env:
+        ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
+        ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+        ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      run: terraform test
