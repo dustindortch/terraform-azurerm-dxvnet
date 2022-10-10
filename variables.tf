@@ -1,5 +1,5 @@
 variable "name" {
-  type = string
+  type        = string
   description = "Virtual network name"
 }
 
@@ -34,9 +34,9 @@ variable "tags" {
 }
 
 variable "enable_ddos_protection_plan" {
-  type = bool
+  type        = bool
   description = "Enable standard ddos protection plan"
-  default = false
+  default     = false
 }
 
 variable "subnets" {

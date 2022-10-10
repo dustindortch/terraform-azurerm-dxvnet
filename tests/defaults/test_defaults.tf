@@ -11,6 +11,7 @@ terraform {
 }
 
 provider "azurerm" {
+  use_oidc = true
   features {}
 }
 
@@ -69,5 +70,27 @@ resource "test_assertions" "defaults" {
     description = "Virtual Network address space is [\"10.0.1.0/24\"]"
     got         = module.main.address_space
     want        = tolist(local.address_space)
+  }
+}
+
+resource "test_assertions" "subnets" {
+  component = "subnets"
+
+  equal "default" {
+    description = "Default subnet created"
+    got         = module.main.subnets["default"].name
+    want        = "default"
+  }
+
+  equal "GatewaySubnet" {
+    description = "GatewaySubnet subnet created"
+    got         = module.main.subnets["GatewaySubnet"].name
+    want        = "GatewaySubnet"
+  }
+
+  equal "AzureFirewallSubnet" {
+    description = "AzureFirewallSubnet subnet created"
+    got         = module.main.subnets["AzureFirewallSubnet"].name
+    want        = "AzureFirewallSubnet"
   }
 }
