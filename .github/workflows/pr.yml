@@ -33,8 +33,7 @@ jobs:
        subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
 
     - name: Run AZ Commands
-      run: |
-        az account show
+      run: az account show
 
     - name: Terraform Init
       id: init
