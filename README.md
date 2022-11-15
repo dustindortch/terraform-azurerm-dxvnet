@@ -4,6 +4,8 @@ Module to create a virtual network resource and associated subnets in Microsoft 
 
 This module implements a hierarchical structure for subnet definitions instead of a set of lists like the [terraform-azurerm-vnet](https://github.com/Azure/terraform-azurerm-network) module does, which leads to fewer errors or misassociations of one list to another list incorrectly.
 
+Please review the [example.tfvars](https://github.com/dustindortch/terraform-azurerm-dxvnet/blob/main/example.tfvars) for data structure examples.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
