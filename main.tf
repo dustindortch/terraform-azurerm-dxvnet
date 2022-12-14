@@ -42,13 +42,15 @@ resource "azurerm_subnet" "subnets" {
   service_endpoints                              = each.value.service_endpoints
   
   dynamic "delegation" {
-    for_each = each.value.delegation
+    for_each = each.value.delegation == null ? [] : [1]
 
-    name = delegation.key
-    
-    service_delegation {
-      name    = delegation.value["service_name"]
-      actions = delegation.value["actions"]
+    content {
+      name = delegation.key
+
+      service_delegation {
+        name    = delegation.value["service_name"]
+        actions = delegation.value["actions"]
+      }
     }
   }
 }
