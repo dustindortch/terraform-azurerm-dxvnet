@@ -48,6 +48,6 @@ variable "subnets" {
     delegation                                     = optional(map(object({
       service_name                                 = optional(string)
       actions                                      = optional(list(string))
-    })))
+    })), {})
   }))
 }
