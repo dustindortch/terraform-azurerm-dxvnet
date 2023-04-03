@@ -15,6 +15,15 @@ subnets = {
   "AzureFirewallSubnet" = {
     address_prefixes = ["10.0.1.128/26"]
   }
+  "subnet-sql-mi" = {
+    address_prefixes = ["10.0.1.192/26"]
+    delegation = {
+      service_name = "Microsoft.Sql/managedInstances"
+      # Actions=["Microsoft.Network/virtualNetworks/subnets/action"] 
+      # Actions are only available on specific service delegations. 
+      # See https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet#actions
+    }
+  }
 }
 tags = {
   CreatedBy = "Terraform"
