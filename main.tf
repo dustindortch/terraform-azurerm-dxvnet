@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.3.0"
+  required_version = ">= 1.6.0"
 }
 
 resource "azurerm_network_ddos_protection_plan" "ddos" {
@@ -37,10 +37,10 @@ resource "azurerm_subnet" "subnets" {
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
 
-  enforce_private_link_endpoint_network_policies = each.value.enforce_private_link_endpoint_network_policies
-  enforce_private_link_service_network_policies  = each.value.enforce_private_link_service_network_policies
-  service_endpoints                              = each.value.service_endpoints
-  
+  private_endpoint_network_policies_enabled     = each.value.enforce_private_link_endpoint_network_policies
+  private_link_service_network_policies_enabled = each.value.enforce_private_link_service_network_policies
+  service_endpoints                             = each.value.service_endpoints
+
   dynamic "delegation" {
     for_each = each.value.delegation
 

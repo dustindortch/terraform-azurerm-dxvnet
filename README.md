@@ -9,13 +9,13 @@ This module implements a hierarchical structure for subnet definitions instead o
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.75.0 |
 
 ## Modules
 
@@ -39,7 +39,7 @@ No modules.
 | <a name="input_location"></a> [location](#input\_location) | Location to deploy virtual network | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Virtual network name | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource group name to deploy virtual network | `string` | n/a | yes |
-| <a name="input_subnets"></a> [subnets](#input\_subnets) | n/a | <pre>map(object({<br>    address_prefixes                               = list(string)<br>    enforce_private_link_endpoint_network_policies = optional(bool, false)<br>    enforce_private_link_service_network_policies  = optional(bool, false)<br>    service_endpoints                              = optional(list(string))<br>  }))</pre> | n/a | yes |
+| <a name="input_subnets"></a> [subnets](#input\_subnets) | n/a | <pre>map(object({<br>    address_prefixes                               = list(string)<br>    enforce_private_link_endpoint_network_policies = optional(bool, false)<br>    enforce_private_link_service_network_policies  = optional(bool, false)<br>    service_endpoints                              = optional(list(string))<br>    delegation                                     = optional(map(object({<br>      service_name                                 = optional(string)<br>      actions                                      = optional(list(string))<br>    })), {})<br>  }))</pre> | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to assign to virtual network | `map` | <pre>{<br>  "CreatedBy": "Terraform",<br>  "Module": "terraform-azurerm-dxvnet"<br>}</pre> | no |
 
 ## Outputs

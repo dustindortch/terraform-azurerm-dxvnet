@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 name                = "myVirtualNetwork"
 resource_group_name = "myResourceGroup"
 location            = "eastus"
@@ -20,3 +21,4 @@ tags = {
   CreatedBy = "Terraform"
   Module    = "terraform-azurerm-dxvnet"
 }
+<!-- END_TF_DOCS -->
