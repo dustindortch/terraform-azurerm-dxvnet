@@ -9,16 +9,16 @@ variables {
   address_space       = ["10.0.1.0/24"]
 
   subnets = {
-    "default" = {
+    default = {
       address_prefixes  = ["10.0.1.0/26"]
       service_endpoints = ["Microsoft.Sql","Microsoft.Web"]
 
       enforce_private_link_service_network_policies = true
     }
-    "GatewaySubnet" = {
+    GatewaySubnet = {
       address_prefixes  = ["10.0.1.64/26"]
     }
-    "AzureFirewallSubnet" = {
+    AzureFirewallSubnet = {
       address_prefixes  = ["10.0.1.128/26"]
     }
   }

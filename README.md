@@ -27,7 +27,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_network_ddos_protection_plan.ddos](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_ddos_protection_plan) | resource |
 | [azurerm_subnet.subnets](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
 | [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) | resource |
 
@@ -35,14 +34,18 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address spaces assigned to virtual network | `list(string)` | n/a | yes |
-| <a name="input_dns_servers"></a> [dns\_servers](#input\_dns\_servers) | DNS servers for Azure virtual network | `list(string)` | `[]` | no |
-| <a name="input_enable_ddos_protection_plan"></a> [enable\_ddos\_protection\_plan](#input\_enable\_ddos\_protection\_plan) | Enable standard ddos protection plan | `bool` | `false` | no |
+| <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Virtual network address space. | `list(string)` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
+| <a name="input_bgp_community"></a> [bgp\_community](#input\_bgp\_community) | BGP community attribute. | `string` | `null` | no |
+| <a name="input_ddos_protection_plan_id"></a> [ddos\_protection\_plan\_id](#input\_ddos\_protection\_plan\_id) | DDoS protection plan ID. | `string` | `null` | no |
+| <a name="input_dns_servers"></a> [dns\_servers](#input\_dns\_servers) | Virtual network DNS server IP addresses. | `list(string)` | `[]` | no |
+| <a name="input_edge_zone"></a> [edge\_zone](#input\_edge\_zone) | Virtual network edge zone. | `string` | `null` | no |
+| <a name="input_encryption"></a> [encryption](#input\_encryption) | Virtual network encryption enforcement. | `string` | `null` | no |
+| <a name="input_flow_timeout_in_minutes"></a> [flow\_timeout\_in\_minutes](#input\_flow\_timeout\_in\_minutes) | Flow timeout in minutes. | `number` | `null` | no |
 | <a name="input_location"></a> [location](#input\_location) | Virtual network region | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Virtual network name | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Virtual network resource group name | `string` | n/a | yes |
-| <a name="input_subnets"></a> [subnets](#input\_subnets) | n/a | <pre>map(object({<br>    address_prefixes                               = list(string)<br>    enforce_private_link_endpoint_network_policies = optional(bool, false)<br>    enforce_private_link_service_network_policies  = optional(bool, false)<br>    service_endpoints                              = optional(list(string))<br>    delegation = optional(map(object({<br>      service_name = optional(string)<br>      actions      = optional(list(string))<br>    })), {})<br>  }))</pre> | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | Tags to assign to virtual network | `map` | <pre>{<br>  "CreatedBy": "Terraform",<br>  "Module": "terraform-azurerm-dxvnet"<br>}</pre> | no |
+| <a name="input_subnets"></a> [subnets](#input\_subnets) | Subnet map with the key as the subnet name. | <pre>map(object({<br>    address_prefixes                              = list(string)<br>    private_endpoint_network_policies_enabled     = optional(bool, true)<br>    private_link_service_network_policies_enabled = optional(bool, true)<br>    service_endpoints                             = optional(list(string), [])<br>    service_endpoint_policy_ids                   = optional(list(string), null)<br>    delegation = optional(map(object({<br>      service_name = string<br>      actions      = list(string)<br>    })), {})<br>  }))</pre> | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Virtual network tags. | `map(string)` | `{}` | no |
 
 ## Outputs
 
